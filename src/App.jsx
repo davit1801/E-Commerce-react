@@ -5,7 +5,10 @@ import Footer from './components/Footer';
 import { useState } from 'react';
 
 function App() {
-  const [cartItems, setcartItmes] = useState([]);
+  const [cartItems, setcartItmes] = useState(localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : []);
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
   const addTocart = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
