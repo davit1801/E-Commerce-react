@@ -12,6 +12,8 @@ import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import SignUpPage from './pages/LoginPage';
 import LoginPage from './pages/LoginPage';
+import Cart from './pages/Cart';
+import { RecoilRoot } from 'recoil';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -20,6 +22,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="product/:id" element={<ProductPage />} />
+      <Route path="cart" element={<Cart />} />
       <Route path="signup" element={<SignUpPage />} />
       <Route path="login" element={<LoginPage />} />
     </Route>
@@ -27,7 +30,7 @@ const router = createBrowserRouter(
 );
 
 root.render(
-  <React.StrictMode>
+  <RecoilRoot>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </RecoilRoot>
 );

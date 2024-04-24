@@ -3,7 +3,7 @@ import Product from './Product';
 
 const API_URL = 'https://fakestoreapi.com/products?limit=20';
 
-const ProductList = () => {
+const ProductList = ({addTocart}) => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
@@ -20,8 +20,8 @@ const ProductList = () => {
     <>
       <h2 className='text-center text-6xl py-2'>Products</h2>
         <div className="flex flex-wrap gap-x-20 gap-y-20 justify-center">
-      {data.map((product) => {
-        return <Product product={product} />;
+      {data.map((product,index) => {
+        return <Product product={product} key={index} addTocart={addTocart} />;
       })}
     </div>
     </>

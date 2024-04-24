@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { HiMiniShoppingCart } from 'react-icons/hi2';
 import { FaShopify } from 'react-icons/fa';
 
-const Header = () => {
-  let [cartOpen, setCartOpen] = useState(false);
+const Header = ({ cartItems }) => {
   return (
     <header className="bg-neutral-800">
-      <div className="max-w-5xl flex items-center justify-between p-4 m-auto ">
+      <div className="max-w-5xl flex items-center justify-between py-4 px-10 m-auto ">
         <Link to="/">
           <FaShopify className="text-6xl" color="white" />
         </Link>
@@ -19,19 +18,19 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/product" className="nav-item">
-                Product
+              <Link to="/cart" className="nav-item">
+                Shopping Cart
               </Link>
             </li>
           </ul>
         </nav>
-        <HiMiniShoppingCart
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
-          className={`shop-cart-btn text-4xl text-slate-50 ${
-            cartOpen && 'active'
-          }`}
-        />
-        {cartOpen && <div className="shop-cart"></div>}
+        <div>
+          <HiMiniShoppingCart
+            className="shop-cart-btn text-5xl"
+            color="white"
+          />
+          <span className="text-orange-500">{cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}</span>
+        </div>
       </div>
     </header>
   );
