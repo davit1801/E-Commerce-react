@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiMiniShoppingCart } from 'react-icons/hi2';
 import { FaShopify } from 'react-icons/fa';

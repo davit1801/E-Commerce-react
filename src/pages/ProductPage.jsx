@@ -28,7 +28,7 @@ const ProductPage = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   return (
     <div className="flex  gap-16 py-16 px-10">

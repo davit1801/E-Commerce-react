@@ -2,7 +2,7 @@ import React from 'react';
 import { useOutletContext, Link } from 'react-router-dom';
 const Cart = () => {
   const [addToCart, cartItems, setcartItmes] = useOutletContext();
-  console.log(cartItems);
+  console.log(addToCart);
   // inc Quantity
   function inc(product) {
     const exsit = cartItems.find((x) => {
