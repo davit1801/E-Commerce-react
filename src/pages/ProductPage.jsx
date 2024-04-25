@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IoIosStarOutline } from 'react-icons/io';
 import { BiSolidCartAdd } from 'react-icons/bi';
+import { useOutletContext } from 'react-router-dom';
 
 const ProductPage = (props) => {
   const { onAdd } = props;
   const [productData, setProductData] = useState({});
   const [productRate, setProductRate] = useState('');
+  const [addTocart] = useOutletContext();
   const { id } = useParams();
   const API_URL = `https://fakestoreapi.com/products/${id}`;
 
@@ -22,7 +24,6 @@ const ProductPage = (props) => {
     const result = await response.json();
     setProductData(result);
     setProductRate(Math.round(result.rating.rate));
-    console.log(result);
   };
 
   useEffect(() => {
@@ -43,7 +44,10 @@ const ProductPage = (props) => {
         <p className="text-xl">
           <span className="font-bold ">Price</span>: ${price}
         </p>
-        <div className="flex items-center w-44 justify-between bg-red-500 rounded-lg px-3 cursor-pointer ">
+        <div
+          className="flex items-center w-44 justify-between bg-red-500 rounded-lg px-3 cursor-pointer "
+          onClick={() => addTocart(productData)}
+        >
           <span className="text-white">ADD TO CART</span>
           <BiSolidCartAdd className="text-4xl" color="white" onClick={onAdd} />
         </div>

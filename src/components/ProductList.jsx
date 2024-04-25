@@ -19,7 +19,7 @@ const ProductList = ({addTocart}) => {
   return (
     <>
       <h2 className='text-center text-6xl py-2'>Products</h2>
-        <div className="flex flex-wrap gap-x-20 gap-y-20 justify-center">
+        <div className="flex flex-wrap gap-x-20 gap-y-10 justify-center">
       {data.map((product,index) => {
         return <Product product={product} key={index} addTocart={addTocart} />;
       })}

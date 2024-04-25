@@ -5,7 +5,7 @@ import { FaShopify } from 'react-icons/fa';
 
 const Header = ({ cartItems }) => {
   return (
-    <header className="bg-neutral-800">
+    <header className="bg-neutral-800 header">
       <div className="max-w-5xl flex items-center justify-between py-4 px-10 m-auto ">
         <Link to="/">
           <FaShopify className="text-6xl" color="white" />
@@ -24,12 +24,12 @@ const Header = ({ cartItems }) => {
             </li>
           </ul>
         </nav>
-        <div>
+        <div className='relative'>
           <HiMiniShoppingCart
             className="shop-cart-btn text-5xl"
             color="white"
           />
-          <span className="text-orange-500">{cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}</span>
+          <span className="cart-quantity text-smd text-bold">{cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}</span>
         </div>
       </div>
     </header>
