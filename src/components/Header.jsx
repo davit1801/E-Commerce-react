@@ -8,7 +8,6 @@ import { signOut } from 'firebase/auth';
 
 const Header = ({ cartItems }) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user);
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
@@ -22,7 +21,7 @@ const Header = ({ cartItems }) => {
   };
   return (
     <header className="bg-neutral-800 header">
-      <div className="max-w-5xl flex items-center justify-between py-4 px-10 m-auto ">
+      <div className="max-w-5xl flex items-center justify-between py-4 px-10 m-auto main-header">
         <Link to="/">
           <FaShopify className="text-6xl" color="white" />
         </Link>
@@ -40,7 +39,7 @@ const Header = ({ cartItems }) => {
             </li>
           </ul>
         </nav>
-        <div className="relative">
+        <div className="relative shopping-basket">
           <HiMiniShoppingCart
             className="shop-cart-btn text-4xl"
             color="white"
@@ -49,8 +48,12 @@ const Header = ({ cartItems }) => {
             {cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}
           </div>
         </div>
-        <span className='text-white'>{user.email}</span>
-        <CiLogout className="text-4xl cursor-pointer" color="white" onClick={handleLogout} />
+        <span className="text-white user-name">{user.email}</span>
+        <CiLogout
+          className="text-4xl cursor-pointer log-out"
+          color="white"
+          onClick={handleLogout}
+        />
       </div>
     </header>
   );

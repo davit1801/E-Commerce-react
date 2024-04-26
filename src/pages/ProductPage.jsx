@@ -31,7 +31,7 @@ const ProductPage = (props) => {
   });
 
   return (
-    <div className="flex  gap-16 py-16 px-10">
+    <div className="flex  gap-16 py-16 px-10 product-details">
       <div className="max-w-44 flex justify-center items-center">
         <img src={image} alt={title} className="" />
       </div>

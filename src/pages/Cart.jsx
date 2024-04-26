@@ -54,6 +54,11 @@ const Cart = () => {
     setcartItmes([]);
   };
 
+  const handleChekOut = () => {
+    alert('Your Order is Placed');
+    setcartItmes([]);
+  };
+
   return (
     <div className="cart-container pt-32 pb-20">
       <h2>Shopping Cart</h2>
@@ -80,7 +85,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="cart-products">
           <div className="titles">
             <h3 className="product-title">Product</h3>
             <h3 className="price">Price</h3>
@@ -122,7 +127,7 @@ const Cart = () => {
                 <span className="amount">${totlalPrice.toFixed(2)}</span>
               </div>
               {/* <p>Taxes and shipping calculated at checkout</p> */}
-              <button>Check out</button>
+              <button onClick={handleChekOut}>Check out</button>
               <div className="continue-shopping">
                 <Link to="/">
                   <svg

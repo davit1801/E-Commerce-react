@@ -6,7 +6,7 @@ const HomePage = () => {
   const [ addTocart] = useOutletContext();
   console.log(addTocart);
   return (
-    <div className="py-8 px-10 pt-32">
+    <div className="py-8 px-10 main-page">
       <ProductList addTocart={addTocart} />
     </div>
   );

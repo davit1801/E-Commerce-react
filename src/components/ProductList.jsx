@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Product from './Product';
 
-const API_URL = 'https://fakestoreapi.com/products?limit=20';
+const API_URL = 'https://fakestoreapi.com/products';
 
 const ProductList = ({ addTocart }) => {
   const [data, setData] = useState([]);
@@ -24,14 +24,14 @@ const ProductList = ({ addTocart }) => {
   return (
     <>
       <h2 className="text-center text-6xl py-2">Products</h2>
-      <div className="flex flex-wrap gap-x-20 gap-y-10 justify-between">
+      <div className="flex flex-wrap gap-x-20 gap-y-10 justify-start product-list">
         {data.slice(0, visible).map((product, index) => {
           return (
             <Product product={product} key={index} addTocart={addTocart} />
           );
         })}
       </div>
-      {visible > 10 ? null : (
+      {visible >= data.length ? null : (
         <div className="flex ">
           <button
             onClick={showMoreItems}
