@@ -42,13 +42,14 @@ const Header = ({ cartItems }) => {
         </nav>
         <div className="relative">
           <HiMiniShoppingCart
-            className="shop-cart-btn text-5xl"
+            className="shop-cart-btn text-4xl"
             color="white"
           />
-          <span className="cart-quantity text-smd text-bold">
+          <div className="cart-quantity text-xl text-bold">
             {cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}
-          </span>
+          </div>
         </div>
+        <span className='text-white'>{user.email}</span>
         <CiLogout className="text-4xl cursor-pointer" color="white" onClick={handleLogout} />
       </div>
     </header>

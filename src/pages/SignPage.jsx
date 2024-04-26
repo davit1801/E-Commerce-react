@@ -15,7 +15,7 @@ const SignPage = () => {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const user = userCredentials.user;
       const id = userCredentials.user.uid;

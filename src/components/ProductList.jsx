@@ -3,12 +3,17 @@ import Product from './Product';
 
 const API_URL = 'https://fakestoreapi.com/products?limit=20';
 
-const ProductList = ({addTocart}) => {
+const ProductList = ({ addTocart }) => {
   const [data, setData] = useState([]);
+  const [visible, setVisible] = useState(10);
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 10);
+  };
 
   const fetchData = async () => {
     const response = await fetch(API_URL);
     const result = await response.json();
+    console.log(result);
     setData(result);
   };
 
@@ -18,14 +23,25 @@ const ProductList = ({addTocart}) => {
 
   return (
     <>
-      <h2 className='text-center text-6xl py-2'>Products</h2>
-        <div className="flex flex-wrap gap-x-20 gap-y-10 justify-center">
-      {data.map((product,index) => {
-        return <Product product={product} key={index} addTocart={addTocart} />;
-      })}
-    </div>
+      <h2 className="text-center text-6xl py-2">Products</h2>
+      <div className="flex flex-wrap gap-x-20 gap-y-10 justify-between">
+        {data.slice(0, visible).map((product, index) => {
+          return (
+            <Product product={product} key={index} addTocart={addTocart} />
+          );
+        })}
+      </div>
+      {visible > 10 ? null : (
+        <div className="flex ">
+          <button
+            onClick={showMoreItems}
+            className="text-xl bg-red-600 text-white py-1 px-3 rounded-2xl my-10 mx-auto"
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </>
-
   );
 };
 
