@@ -126,7 +126,6 @@ const Cart = () => {
                 <span>Subtotal</span>
                 <span className="amount">${totlalPrice.toFixed(2)}</span>
               </div>
-              {/* <p>Taxes and shipping calculated at checkout</p> */}
               <button onClick={handleChekOut}>Check out</button>
               <div className="continue-shopping">
                 <Link to="/">
