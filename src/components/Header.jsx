@@ -1,9 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HiMiniShoppingCart } from 'react-icons/hi2';
 import { FaShopify } from 'react-icons/fa';
+import { CiLogout } from 'react-icons/ci';
+import { auth } from '../lib/firebase';
+import { signOut } from 'firebase/auth';
 
 const Header = ({ cartItems }) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user);
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <header className="bg-neutral-800 header">
       <div className="max-w-5xl flex items-center justify-between py-4 px-10 m-auto ">
@@ -24,13 +40,16 @@ const Header = ({ cartItems }) => {
             </li>
           </ul>
         </nav>
-        <div className='relative'>
+        <div className="relative">
           <HiMiniShoppingCart
             className="shop-cart-btn text-5xl"
             color="white"
           />
-          <span className="cart-quantity text-smd text-bold">{cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}</span>
+          <span className="cart-quantity text-smd text-bold">
+            {cartItems.reduce((quantity, item) => quantity + item.quantity, 0)}
+          </span>
         </div>
+        <CiLogout className="text-4xl cursor-pointer" color="white" onClick={handleLogout} />
       </div>
     </header>
   );
